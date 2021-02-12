@@ -13,10 +13,21 @@ BepiTBR is written in python and raku and can be downloaded from [github](https:
 ### Dependencies
 Raku v6.d or later
 python 3.6.4+
+R 3.6+
+  - glmnet package
 conda 4.4.10+
 java 1.6+
 PERL 5.0+
+gcc 5.4.0+
+g++ 4.8.5+
+
 
 #### BepiPred 1.0
-download site: http://www.cbs.dtu.dk/cgi-bin/nph-sw_request?bepipred
+download site: [http://www.cbs.dtu.dk/cgi-bin/nph-sw_request?bepipred](http://www.cbs.dtu.dk/cgi-bin/nph-sw_request?bepipred)<br/>
+follow the instructions in `bepipred-1.0.readme` to complete installation
+#### BepiPred 2.0
+Follow the instructions in `bp2_env_install_instructions.txt` under `install` to install the bp2 conda environment
+#### LBEEP 1.0
+download site: [https://github.com/brsaran/LBEEP](https://github.com/brsaran/LBEEP)<br/>
+follow the instructions in `README.md` to install LBEEP 1.0
 
