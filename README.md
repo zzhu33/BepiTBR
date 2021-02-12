@@ -13,14 +13,12 @@ BepiTBR is written in python and raku and can be downloaded from [github](https:
 ### Dependencies
 Raku v6.d or later<br/>
 python 3.6.4+<br/>
-R 3.6+
-  - glmnet package
+R 3.6+, glmnet package<br/>
 conda 4.4.10+<br/>
 java 1.6+<br/>
 PERL 5.0+<br/>
 gcc 5.4.0+<br/>
-g++ 4.8.5+<br/>
-
+g++ 4.8.5+
 
 #### BepiPred 1.0
 download site: [http://www.cbs.dtu.dk/cgi-bin/nph-sw_request?bepipred](http://www.cbs.dtu.dk/cgi-bin/nph-sw_request?bepipred)<br/>
