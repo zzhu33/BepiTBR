@@ -11,15 +11,15 @@ BepiTBR requires a linux x86-64 operating system with basic utilities (tested on
 ### Installation
 BepiTBR is written in python and raku and can be downloaded from [github](https://github.com/zzhu33/BepiTBR/blob/main/BepiTBR.zip). Note that dependecies need to be manually installed.
 ### Dependencies
-Raku v6.d or later
-python 3.6.4+
+Raku v6.d or later<br/>
+python 3.6.4+<br/>
 R 3.6+
   - glmnet package
-conda 4.4.10+
-java 1.6+
-PERL 5.0+
-gcc 5.4.0+
-g++ 4.8.5+
+conda 4.4.10+<br/>
+java 1.6+<br/>
+PERL 5.0+<br/>
+gcc 5.4.0+<br/>
+g++ 4.8.5+<br/>
 
 
 #### BepiPred 1.0
