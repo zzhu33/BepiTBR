@@ -2,7 +2,7 @@
 # BepiTBR
 Improved B cell epitope prediction using T cell-based prediction
 ## Introduction
-The ability to predict B cell epitopes from antigen sequences is critical for biomedical research and many clinical applications. However, despite substantial efforts over the past 20 years, the performance of even the best B cell epitope prediction software is still modest. Based on the idea of T-B reciprocity, BepiTBR is a proof of concept B cell epitope prediction model that demonstrates improved performance by incorporating CD4+ T cell epitope prediction. 
+The ability to predict B cell epitopes from antigen sequences is critical for biomedical research and many clinical applications. However, despite substantial efforts over the past 20 years, the performance of even the best B cell epitope prediction software is still modest. Based on the idea of T-B reciprocity, BepiTBR is a B cell epitope prediction model that demonstrates improved performance by incorporating CD4+ T cell epitope prediction. 
 
 Researchers interested in more information about BepiTBR and other bioinformatics tools can visit Dr. Tao Wang's [lab website](https://qbrc.swmed.edu/labs/wanglab/index.php). 
 ## Getting started
@@ -36,7 +36,9 @@ download site: [https://github.com/GfellerLab/MixMHC2pred](https://github.com/Gf
 follow the instructions in `README.md` to install.
 ## Tutorial
 This tutorial will guide the user in running BepiTBR in several different modes. 
-### epitope mode
+### Epitope mode
+Analyze specific epitopes within proteins<br/>
+requires epitope sequences and their corresponding full protein sequence<br/>
 Example command
 ```
 raku BepiTBR_fasta.raku \
@@ -59,4 +61,6 @@ raku BepiTBR_fasta.raku \
 `--netMHCIIpan`: path to the NetMHCIIpan 3.2 executable<br/>
 `--dir`: output directory<br/>
 `--thread`: number of CPU thread to use; system dependent<br/>
+
+### 
 
