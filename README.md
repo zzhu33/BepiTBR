@@ -38,8 +38,9 @@ follow the instructions in `README.md` to install.
 This tutorial will guide the user in running BepiTBR in several different modes. 
 ### Epitope mode
 Analyzes specific epitopes within proteins<br/>
-Requires epitope sequences and their corresponding full protein sequence<br/>
-Example command using provided example files:
+Requires epitope sequences and their corresponding full protein sequences<br/>
+Example command using provided example files:<br/>
+(replace paths with appropriate paths according to user's particular installation)<br/>
 ```
 raku BepiTBR.raku \
 --motif0_file=examples/test_data_BepiTBR/Ind-positive.txt \
@@ -65,7 +66,8 @@ raku BepiTBR.raku \
 ### Full protein mode
 Identify potential B cell epitopes from a protein sequence<br/>
 Requires the protein sequence to be input directly<br/>
-Example command:
+Example command:<br/>
+(replace paths with appropriate paths according to user's particular installation)<br/>
 ```
 raku BepiTBR_full.raku \
 --full0=$(cat examples/test_data_BepiTBR_full/example_full.txt) \
@@ -87,3 +89,31 @@ raku BepiTBR_full.raku \
 `--netMHCIIpan`: recommended to set to NA to greatly improve run speed<br/>
 `--dir`: output directory<br/>
 `--thread`: number of CPU thread to use; system dependent<br/>
+
+### Fasta mode
+Identify potential B cell epitopes from a file containing multiple protein sequences<br/>
+Requires protein sequence file in fasta format<br/>
+Example command:<br/>
+(replace paths with appropriate paths according to user's particular installation)<br/>
+```
+raku BepiTBR_full.raku \
+--fasta0=examples/test_data_BepiTBR_fasta/peptide_with_full_length.txt \
+--length=15 \
+--bepipred2=bp2/bin/activate \
+--bepipred1=/home/exampleUser/bp1/bepipred-1.0/bepipred \
+--LBEEP=/home/exampleUser/LBEEP/ \
+--MixMHC2pred=/home/exampleUser/MixMHC2pred/MixMHC2pred_unix \
+--netMHCIIpan=NA \
+--dir=example/test_output_BepiTBR \
+--thread=20
+```
+`--fasta0`: protein sequence fasta<br/>
+`--length`: length of the B cell epitopes to scan in a moving window. Recommended length: 15<br/>
+`--bepipred2`: the conda environment activation file for BepiPred 2.0 (`<bp2_env_directory>/bin/activate`)<br/>
+`--bepipred1`: path to the BepiPred 1.0 executable<br/>
+`--LBEEP`:  path to the LBEEP directory<br/>
+`--MixMHC2pred`: path to the MixMHC2pred executable<br/>
+`--netMHCIIpan`: recommended to set to NA to greatly improve run speed<br/>
+`--dir`: output directory; results for each antigen sequence will be placed in a sub-directory <br/>
+`--thread`: number of CPU thread to use; system dependent<br/>
+
