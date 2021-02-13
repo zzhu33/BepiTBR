@@ -50,13 +50,13 @@ raku BepiTBR_fasta.raku \
 --dir=example/test_output_BepiTBR \
 --thread=20
 ```
-`--motif0_file`: epitopes file
-`--full0_file`: full protein sequences file
-`--bepipred2`: the conda environment activation file for BepiPred 2.0 (`<bp2_env_directory>/bin/activate`)
-`--bepipred1`: path to the BepiPred 1.0 executable
-`--LBEEP`:  path to the LBEEP directory
-`--MixMHC2pred`: path to the MixMHC2pred executable
-`--netMHCIIpan`: path to the NetMHCIIpan 3.2 executable
-`--dir`: output directory \
-`--thread`: number of CPU thread to use; system dependent
+`--motif0_file`: epitopes file<br/>
+`--full0_file`: full protein sequences file<br/>
+`--bepipred2`: the conda environment activation file for BepiPred 2.0 (`<bp2_env_directory>/bin/activate`)<br/>
+`--bepipred1`: path to the BepiPred 1.0 executable<br/>
+`--LBEEP`:  path to the LBEEP directory<br/>
+`--MixMHC2pred`: path to the MixMHC2pred executable<br/>
+`--netMHCIIpan`: path to the NetMHCIIpan 3.2 executable<br/>
+`--dir`: output directory<br/>
+`--thread`: number of CPU thread to use; system dependent<br/>
 
