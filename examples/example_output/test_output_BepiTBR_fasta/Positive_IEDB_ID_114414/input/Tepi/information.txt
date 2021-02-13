@@ -1,4 +1,0 @@
-Bepi_pos	1
-length_full	263
-start	0
-end	248
