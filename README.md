@@ -62,7 +62,13 @@ raku BepiTBR.raku \
 `--netMHCIIpan`: path to the NetMHCIIpan 3.2 executable<br/>
 `--dir`: output directory<br/>
 `--thread`: number of CPU thread to use; system dependent<br/>
-
+#### Output
+The main output is the `predictions.txt` file in the output directory. Each line corresponds to an epitope and consists of tab-seperated data with the format:
+```
+epitope_name  base_bepipred1.0	base_bepipred2.0	base_LBEEP	enhanced_bepipred1.0	enhanced_bepipred2.0	enhanced_LBEEP	ensemble	epitope_sequence
+```
+where `base` indicates original prediction scores using existing software, `enhanced` indicates scores modified based on T cell predictions, and `ensemble` the BepiTBR prediction score.<br/>
+The B cell and T cell (MHC II) predictions used to calculate the final scores are compressed in order to save space; they are kept as `Bepi.tar.gz` and `Tepi.tar.gz`, respectively.
 ### Full protein mode
 Identify potential B cell epitopes from a protein sequence<br/>
 Requires the protein sequence to be input directly<br/>
@@ -89,6 +95,13 @@ raku BepiTBR_full.raku \
 `--netMHCIIpan`: recommended to set to NA to greatly improve run speed<br/>
 `--dir`: output directory<br/>
 `--thread`: number of CPU thread to use; system dependent<br/>
+#### Output
+The main output is the `predictions.txt` file in the output directory. Each line corresponds to the start location of a potential epitope on the protein and consists of tab-seperated data with the format:
+```
+position  base_bepipred1.0	base_bepipred2.0	base_LBEEP	enhanced_bepipred1.0	enhanced_bepipred2.0	enhanced_LBEEP	ensemble	epitope_sequence
+```
+same as epitope mode, `base` indicates original prediction scores using existing software, `enhanced` indicates scores modified based on T cell predictions, and `ensemble` the BepiTBR prediction score.<br/>
+Same as epitope mode, the B cell and T cell (MHC II) predictions used to calculate the final scores are compressed in order to save space; they are kept as `Bepi.tar.gz` and `Tepi.tar.gz`, respectively.
 
 ### Fasta mode
 Identify potential B cell epitopes from a file containing multiple protein sequences<br/>
@@ -116,4 +129,11 @@ raku BepiTBR_full.raku \
 `--netMHCIIpan`: recommended to set to NA to greatly improve run speed<br/>
 `--dir`: output directory; results for each antigen sequence will be placed in a sub-directory <br/>
 `--thread`: number of CPU thread to use; system dependent<br/>
+#### Output
+For each protein in the fasta file labelled with a header line, a sub-directory for that protein will be created in the output directory. In each sub-directory, the main output is the `predictions.txt` file. Same as for full protein mode, each line corresponds to the start location of a potential epitope on the protein and consists of tab-seperated data with the format:
+```
+position  base_bepipred1.0	base_bepipred2.0	base_LBEEP	enhanced_bepipred1.0	enhanced_bepipred2.0	enhanced_LBEEP	ensemble	epitope_sequence
+```
+same as the other two modes, `base` indicates original prediction scores using existing software, `enhanced` indicates scores modified based on T cell predictions, and `ensemble` the BepiTBR prediction score.<br/>
+Also the same as the other two modes, the B cell and T cell (MHC II) predictions used to calculate the final scores are compressed in order to save space; they are kept as `Bepi.tar.gz` and `Tepi.tar.gz`, respectively.
 
