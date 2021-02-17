@@ -140,7 +140,7 @@ raku BepiTBR_full.raku \
 `--thread`: number of CPU thread to use; system dependent<br/>
 #### Output
 For each protein in the fasta file labelled with a header line, a sub-directory for that protein will be created in the output directory. For example, for the input in `examples/test_data_BepiTBR_fasta`, two sub-directories, `Positive_IEDB_ID_114414` and `Positive_IEDB_ID_123439` will be created in the output directory. In each sub-directory, the main output is the `predictions.txt` file. Same as for full protein mode, each line corresponds to the start location of a potential epitope on the protein and consists of tab-seperated data with the format:
-epitope name, base bepipred1.0,	base bepipred2.0,	base LBEEP, enhanced bepipred1.0,	enhanced bepipred2.0,	enhanced LBEEP,	ensemble,	epitope sequence. For `Positive_IEDB_ID_114414`:
+epitope name, base bepipred1.0,	base bepipred2.0,	base LBEEP, enhanced bepipred1.0,	enhanced bepipred2.0,	enhanced LBEEP,	ensemble,	epitope sequence. For `Positive_IEDB_ID_114414`, the example output is as follows:
 ```
 base_bepipred1.0	base_bepipred2.0	base_LBEEP	enhanced_bepipred1.0	enhanced_bepipred2.0	enhanced_LBEEP	ensemble	epitope
 job_pos=0	0.656	0.3888	0.43	-0.8591	-1.2612	-1.2655	-0.6383	MASSSSVLLVVALFA
