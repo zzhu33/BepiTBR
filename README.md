@@ -64,10 +64,14 @@ raku BepiTBR.raku \
 `--thread`: number of CPU thread to use; system dependent<br/>
 #### Output
 The main output is the `predictions.txt` file in the output directory. Each line corresponds to an epitope and consists of tab-seperated data with the format:
+epitope name, base bepipred1.0,	base bepipred2.0,	base LBEEP, enhanced bepipred1.0,	enhanced bepipred2.0,	enhanced LBEEP,	ensemble,	epitope sequence. For example:
 ```
-epitope_name  base_bepipred1.0	base_bepipred2.0	base_LBEEP	enhanced_bepipred1.0	enhanced_bepipred2.0	enhanced_LBEEP	ensemble	epitope_sequence
+base_bepipred1.0	base_bepipred2.0	base_LBEEP	enhanced_bepipred1.0	enhanced_bepipred2.0	enhanced_LBEEP	ensemble	epitope
+Negative_IEDB_ID_946463	1.927	0.6338	0.67	-0.5321	-0.3189	-0.4096	0.8883	KKLIPNPNKIRKPPK
+Negative_IEDB_ID_947078	1.013	0.6201	0.51	-0.5706	-0.4672	-0.6792	0.5832	VTRLRYRSVREVWQS
+...
 ```
-where `base` indicates original prediction scores using existing software, `enhanced` indicates scores modified based on T cell predictions, and `ensemble` the BepiTBR prediction score.<br/>
+Here, `base` indicates original prediction scores using existing software, `enhanced` indicates scores modified based on T cell predictions, and `ensemble` the BepiTBR prediction score.<br/>
 The B cell and T cell (MHC II) predictions used to calculate the final scores are compressed in order to save space; they are kept as `Bepi.tar.gz` and `Tepi.tar.gz`, respectively.
 ### Full protein mode
 Identify potential B cell epitopes from a protein sequence<br/>
@@ -97,8 +101,13 @@ raku BepiTBR_full.raku \
 `--thread`: number of CPU thread to use; system dependent<br/>
 #### Output
 The main output is the `predictions.txt` file in the output directory. Each line corresponds to the start location of a potential epitope on the protein and consists of tab-seperated data with the format:
+epitope name, base bepipred1.0,	base bepipred2.0,	base LBEEP, enhanced bepipred1.0,	enhanced bepipred2.0,	enhanced LBEEP,	ensemble,	epitope sequence. For example:
 ```
-position  base_bepipred1.0	base_bepipred2.0	base_LBEEP	enhanced_bepipred1.0	enhanced_bepipred2.0	enhanced_LBEEP	ensemble	epitope_sequence
+base_bepipred1.0	base_bepipred2.0	base_LBEEP	enhanced_bepipred1.0	enhanced_bepipred2.0	enhanced_LBEEP	ensemble	epitope
+job_pos=0	1.855	0.6331	0.47	-0.4154	-0.5009	-0.8526	0.5792	MTENSTSAPAAKPKR
+job_pos=1	1.855	0.6418	0.48	-0.4242	-0.4819	-0.8472	0.5914	TENSTSAPAAKPKRA
+job_pos=2	1.855	0.6418	0.48	-0.433	-0.4867	-0.8582	0.5743	ENSTSAPAAKPKRAK
+...
 ```
 same as epitope mode, `base` indicates original prediction scores using existing software, `enhanced` indicates scores modified based on T cell predictions, and `ensemble` the BepiTBR prediction score.<br/>
 Same as epitope mode, the B cell and T cell (MHC II) predictions used to calculate the final scores are compressed in order to save space; they are kept as `Bepi.tar.gz` and `Tepi.tar.gz`, respectively.
@@ -130,9 +139,22 @@ raku BepiTBR_full.raku \
 `--dir`: output directory; results for each antigen sequence will be placed in a sub-directory <br/>
 `--thread`: number of CPU thread to use; system dependent<br/>
 #### Output
-For each protein in the fasta file labelled with a header line, a sub-directory for that protein will be created in the output directory. In each sub-directory, the main output is the `predictions.txt` file. Same as for full protein mode, each line corresponds to the start location of a potential epitope on the protein and consists of tab-seperated data with the format:
+For each protein in the fasta file labelled with a header line, a sub-directory for that protein will be created in the output directory. For example, for the input in `examples/test_data_BepiTBR_fasta`, two sub-directories, `Positive_IEDB_ID_114414` and `Positive_IEDB_ID_123439` will be created in the output directory. In each sub-directory, the main output is the `predictions.txt` file. Same as for full protein mode, each line corresponds to the start location of a potential epitope on the protein and consists of tab-seperated data with the format:
+epitope name, base bepipred1.0,	base bepipred2.0,	base LBEEP, enhanced bepipred1.0,	enhanced bepipred2.0,	enhanced LBEEP,	ensemble,	epitope sequence. For `Positive_IEDB_ID_114414`:
 ```
-position  base_bepipred1.0	base_bepipred2.0	base_LBEEP	enhanced_bepipred1.0	enhanced_bepipred2.0	enhanced_LBEEP	ensemble	epitope_sequence
+base_bepipred1.0	base_bepipred2.0	base_LBEEP	enhanced_bepipred1.0	enhanced_bepipred2.0	enhanced_LBEEP	ensemble	epitope
+job_pos=0	0.656	0.3888	0.43	-0.8591	-1.2612	-1.2655	-0.6383	MASSSSVLLVVALFA
+job_pos=1	0.656	0.3888	0.32	-0.844	-1.2423	-1.583	-0.7871	ASSSSVLLVVALFAV
+job_pos=2	0.288	0.3888	0.29	-0.9434	-1.235	-1.6714	-0.9076	SSSSVLLVVALFAVF
+...
+```
+and for `Positive_IEDB_ID_123439`:
+```
+base_bepipred1.0	base_bepipred2.0	base_LBEEP	enhanced_bepipred1.0	enhanced_bepipred2.0	enhanced_LBEEP	ensemble	epitope
+job_pos=0	-1.393	0.3664	0.28	-1.891	-1.1241	-1.5599	-1.4901	MRLLQCVLLCVSLSL
+job_pos=1	-0.917	0.3923	0.3	-1.6216	-1.0555	-1.4938	-1.1855	RLLQCVLLCVSLSLV
+job_pos=2	-0.719	0.4382	0.32	-1.5136	-0.9351	-1.4293	-0.9637	LLQCVLLCVSLSLVL
+...
 ```
 same as the other two modes, `base` indicates original prediction scores using existing software, `enhanced` indicates scores modified based on T cell predictions, and `ensemble` the BepiTBR prediction score.<br/>
 Also the same as the other two modes, the B cell and T cell (MHC II) predictions used to calculate the final scores are compressed in order to save space; they are kept as `Bepi.tar.gz` and `Tepi.tar.gz`, respectively.
