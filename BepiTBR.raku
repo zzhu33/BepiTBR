@@ -1,7 +1,7 @@
 #!/usr/bin/env raku
 
 # Prediction of B cell epitopes using BepiTBR given candidate B cell epitopes
-# predicted B cell epitopes have ensemble scores of >-1 (stringent cutoff) or >-2 (lenient cutoff)
+# predicted B cell epitopes have ensemble scores of >0.5 (stringent cutoff) or >0 (lenient cutoff)
 # note: check carefully that the full antigen sequences do not have "*".
 
 # dependency: raku/perl6 (>=2020.10), R (>=3.6, glmnet package available), python (>=3.6.4)
