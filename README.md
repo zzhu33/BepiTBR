@@ -160,3 +160,8 @@ job_pos=2	-0.719	0.4382	0.32	-1.5136	-0.9351	-1.4293	-0.9637	LLQCVLLCVSLSLVL
 same as the other two modes, `base` indicates original prediction scores using existing B cell epitope prediction software, `enhanced` indicates predictions made by considering both the base models and T cell epitope predictions, for each of the three base models, and `ensemble` is the final BepiTBR prediction score that is the aggregate of the three enhanced models.<br/>
 Also the same as the other two modes, the B cell and T cell (MHC II) predictions used to calculate the final scores are compressed in order to save space; they are kept as `Bepi.tar.gz` and `Tepi.tar.gz`, respectively.
 
+## Data 
+### Training/validation data
+The training/validation data used for BepiTBR were downloaded from [IEDB](https://www.iedb.org/) and then filtered according to a number of criteria. It is provided on the BepiTBR github [page](https://github.com/zzhu33/BepiTBR/blob/main/data.zip).
+### SARS-CoV-2 epitope data
+The epitope predictions for select SARS-CoV-2 sequences are available on the BepiTBR github page ([B epitopes](https://github.com/zzhu33/BepiTBR/blob/main/unique_variants_bepiTBR_epitopes.tar.xz), [T epitopes](https://github.com/zzhu33/BepiTBR/blob/main/unique_variants_T_epitopes.tar.xz)). The original viral sequences were downladed from [NGDC](https://bigd.big.ac.cn/ncov) and [GISAID](https://www.gisaid.org/). The original sequences are not provided here as per GISAID's terms of use.
