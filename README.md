@@ -74,7 +74,7 @@ Negative_IEDB_ID_947078	1.013	0.6201	0.51	-0.5706	-0.4672	-0.6792	0.5832	VTRLRYR
 ```
 Here, `base` indicates original prediction scores using existing B cell epitope prediction software, `enhanced` indicates predictions made by considering both the base models and T cell epitope predictions, for each of the three base models, and `ensemble` is the final BepiTBR prediction score that is the aggregate of the three enhanced models.<br/>
 The B cell and T cell (MHC II) predictions used to calculate the final scores are compressed in order to save space; they are kept as `Bepi.tar.gz` and `Tepi.tar.gz`, respectively.<br/>
-The example code should take ~4 minutes to complete. Performance can be increased by increasing `--thread` if hardware resources allows. Memory usage is approximately 3 GB/thread in this mode.
+The example code should take ~4 minutes to complete. Performance can be increased by increasing `--thread` if hardware resources allows. Peak memory usage is approximately 3 GB/thread in this mode.
 ### Full protein mode
 Identify potential B cell epitopes from a full antigen protein sequence<br/>
 Requires the antigen protein sequence to be input directly<br/>
