@@ -9,7 +9,7 @@ Researchers interested in more information about BepiTBR and other bioinformatic
 ### System requirements
 BepiTBR requires a linux x86-64 operating system with basic utilities (tested on RHEL 6, kernel 3.10.0-693 and Ubuntu 18.04, 20.04).
 ### Installation
-BepiTBR is written in python, raku, and R. It and can be downloaded from [github](https://github.com/zzhu33/BepiTBR/releases). Simply place the BepiTBR directory in a desired location. Note that some dependecies need to be manually installed.
+BepiTBR is written in python, raku, and R. It and can be downloaded from [github](https://github.com/zzhu33/BepiTBR/releases). Simply extract and place the BepiTBR directory in a desired location. Note that some dependecies need to be manually installed. ALthough actual compile/install times are low, obtaining and installing the dependencies may take approximately 1 hour. ~5 GB of free disk spece is also required during installation. 
 ### Dependencies
 Raku v6.d or later<br/>
 python 3.6.4+<br/>
@@ -18,7 +18,7 @@ conda 4.4.10+<br/>
 java 1.6+<br/>
 PERL 5.0+<br/>
 gcc 5.4.0+<br/>
-g++ 4.8.5+
+g++ 4.8.5+<br/>
 tar
 
 #### BepiPred 1.0
@@ -36,7 +36,7 @@ follow the instructions in `netMHCIIpan-3.2.readme` to complete installation.
 download site: [https://github.com/GfellerLab/MixMHC2pred](https://github.com/GfellerLab/MixMHC2pred)<br/>
 follow the instructions in `README.md` to install.
 ## Tutorial
-This tutorial will guide the user in running BepiTBR in several different modes. 
+This tutorial will guide the user in running BepiTBR in several different modes. The generated results can be compared to the provided results in `examples/example_output`
 ### Epitope mode
 Analyzes specific epitopes within proteins<br/>
 Requires epitope sequences and their corresponding full antigen protein sequences<br/>
@@ -51,8 +51,8 @@ raku BepiTBR.raku \
 --LBEEP=/home/exampleUser/LBEEP/ \
 --MixMHC2pred=/home/exampleUser/MixMHC2pred/MixMHC2pred_unix \
 --netMHCIIpan=/home/exampleUser/netMHCIIpan-3.2/netMHCIIpan \
---dir=example/test_output_BepiTBR \
---thread=20
+--dir=/home/exampleUser/BepiTBR/examples/test_output_BepiTBR \
+--thread=4
 ```
 `--motif0_file`: candidate epitopes file<br/>
 `--full0_file`: full protein sequences file<br/>
@@ -73,7 +73,8 @@ Negative_IEDB_ID_947078	1.013	0.6201	0.51	-0.5706	-0.4672	-0.6792	0.5832	VTRLRYR
 ...
 ```
 Here, `base` indicates original prediction scores using existing B cell epitope prediction software, `enhanced` indicates predictions made by considering both the base models and T cell epitope predictions, for each of the three base models, and `ensemble` is the final BepiTBR prediction score that is the aggregate of the three enhanced models.<br/>
-The B cell and T cell (MHC II) predictions used to calculate the final scores are compressed in order to save space; they are kept as `Bepi.tar.gz` and `Tepi.tar.gz`, respectively.
+The B cell and T cell (MHC II) predictions used to calculate the final scores are compressed in order to save space; they are kept as `Bepi.tar.gz` and `Tepi.tar.gz`, respectively.<br/>
+The example code should take ~4 minutes to complete. Performance can be increased by increasing `--thread` if hardware resources allows. Memory usage is approximately 3 GB/thread in this mode.
 ### Full protein mode
 Identify potential B cell epitopes from a full antigen protein sequence<br/>
 Requires the antigen protein sequence to be input directly<br/>
@@ -88,8 +89,8 @@ raku BepiTBR_full.raku \
 --LBEEP=/home/exampleUser/LBEEP/ \
 --MixMHC2pred=/home/exampleUser/MixMHC2pred/MixMHC2pred_unix \
 --netMHCIIpan=NA \
---dir=example/test_output_BepiTBR \
---thread=20
+--dir=/home/exampleUser/BepiTBR/example/test_output_BepiTBR_full \
+--thread=16
 ```
 `--full0`: protein sequence<br/>
 `--length`: length of the B cell epitopes to scan in a moving window. Recommended length: 15<br/>
@@ -111,7 +112,8 @@ job_pos=2	1.855	0.6418	0.48	-0.433	-0.4867	-0.8582	0.5743	ENSTSAPAAKPKRAK
 ...
 ```
 same as epitope mode, `base` indicates original prediction scores using existing B cell epitope prediction software, `enhanced` indicates predictions made by considering both the base models and T cell epitope predictions, for each of the three base models, and `ensemble` is the final BepiTBR prediction score that is the aggregate of the three enhanced models. <br/>
-Same as epitope mode, the B cell and T cell (MHC II) predictions used to calculate the final scores are compressed in order to save space; they are kept as `Bepi.tar.gz` and `Tepi.tar.gz`, respectively.
+Same as epitope mode, the B cell and T cell (MHC II) predictions used to calculate the final scores are compressed in order to save space; they are kept as `Bepi.tar.gz` and `Tepi.tar.gz`, respectively.<br/>
+The example code should take 1-2 minutes to complete. Unlike epitope mode, memory use does not scale with `--thread`, thus using the maximum number of CPU cores available is recommended.
 
 ### Fasta mode
 Identify potential B cell epitopes from a .fasta file containing multiple antigen protein sequences<br/>
@@ -119,7 +121,7 @@ Requires protein sequence file in fasta format<br/>
 Example command:<br/>
 (replace paths with appropriate paths according to user's particular installation)<br/>
 ```
-raku BepiTBR_full.raku \
+raku BepiTBR_fasta.raku \
 --fasta0=examples/test_data_BepiTBR_fasta/peptide_with_full_length.txt \
 --length=15 \
 --bepipred2=bp2/bin/activate \
@@ -127,8 +129,8 @@ raku BepiTBR_full.raku \
 --LBEEP=/home/exampleUser/LBEEP/ \
 --MixMHC2pred=/home/exampleUser/MixMHC2pred/MixMHC2pred_unix \
 --netMHCIIpan=NA \
---dir=example/test_output_BepiTBR \
---thread=20
+--dir=/home/exampleUser/BepiTBR/examples/test_output_BepiTBR_fasta \
+--thread=16
 ```
 `--fasta0`: protein sequence file in fasta format<br/>
 `--length`: length of the B cell epitopes to scan in a moving window. Recommended length: 15<br/>
@@ -158,7 +160,8 @@ job_pos=2	-0.719	0.4382	0.32	-1.5136	-0.9351	-1.4293	-0.9637	LLQCVLLCVSLSLVL
 ...
 ```
 same as the other two modes, `base` indicates original prediction scores using existing B cell epitope prediction software, `enhanced` indicates predictions made by considering both the base models and T cell epitope predictions, for each of the three base models, and `ensemble` is the final BepiTBR prediction score that is the aggregate of the three enhanced models.<br/>
-Also the same as the other two modes, the B cell and T cell (MHC II) predictions used to calculate the final scores are compressed in order to save space; they are kept as `Bepi.tar.gz` and `Tepi.tar.gz`, respectively.
+Also the same as the other two modes, the B cell and T cell (MHC II) predictions used to calculate the final scores are compressed in order to save space; they are kept as `Bepi.tar.gz` and `Tepi.tar.gz`, respectively.<br/>
+The example code should take ~7 minutes to complete. Using the maximum number of CPU cores available is recommended.
 
 ## Data 
 ### Training/validation data
