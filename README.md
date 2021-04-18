@@ -5,11 +5,11 @@ Leveraging T-B reciprocity to enhance B cell epitope prediction
 The ability to predict B cell epitopes from antigen sequences is critical for biomedical research and many clinical applications. However, despite substantial efforts over the past 20 years, the performance of even the best B cell epitope prediction software is still modest. Based on the idea of T-B reciprocity, BepiTBR is a B cell epitope prediction model that demonstrates improved performance by incorporating prediction of nearby CD4+ T cell epitopes close to the B cell epitopes. 
 
 Researchers interested in more information about BepiTBR and other bioinformatics tools can visit Dr. Tao Wang's [lab website](https://qbrc.swmed.edu/labs/wanglab/index.php). 
-## Getting started
+## Installation guide
 ### System requirements
 BepiTBR requires a linux x86-64 operating system with basic utilities (tested on RHEL 6, kernel 3.10.0-693 and Ubuntu 18.04, 20.04).
 ### Installation
-BepiTBR is written in python, raku, and R and can be downloaded from [github](https://github.com/zzhu33/BepiTBR/releases). Note that some dependecies need to be manually installed.
+BepiTBR is written in python, raku, and R. It and can be downloaded from [github](https://github.com/zzhu33/BepiTBR/releases). Simply place the BepiTBR directory in a desired location. Note that some dependecies need to be manually installed.
 ### Dependencies
 Raku v6.d or later<br/>
 python 3.6.4+<br/>
