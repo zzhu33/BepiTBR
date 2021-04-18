@@ -24,4 +24,5 @@ install bp2:
 	"pip install bepipred-2.0/"
 	"conda pack -n bp2"
 	"mkdir bp2; tar xvf bp2.tar.gz -C bp2"		
-	move bp2 environment directory/delete bp2.tar.gz if needed, this is the bp2 env directory
+	move bp2 environment directory/delete bp2.tar.gz if needed, this is the bp2 env directory. 
+		It is recommended to move the bp2 env directory into the BepiTBR main directory
