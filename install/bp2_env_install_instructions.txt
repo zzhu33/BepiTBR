@@ -1,0 +1,27 @@
+requirements:
+	conda
+		conda-pack ("conda install conda-pack")
+	gcc
+	g++
+
+base environment install:
+	"conda env create -f bp2_env_base.yml"	#installs required python packages
+
+bp2 dependencies:
+	download main page: https://services.healthtech.dtu.dk/software.php		#link changes periodically; search for bepipred2/netsurfp portable version
+
+	download and extract netsurp1.0
+	download the nr70_db they provide 	#big
+	download and install blast-2.2.18	#hard to find; other versions that includes blastpgp can be used
+	install netsurfp according to its readme and test
+	***note that it is recommended that netsurfp be made available gloabally (added to PATH)***
+	
+	download and extract bepipred2.0
+
+install bp2:
+	"cd <bepipred2_parent_directory>"
+	"conda activate bp2"
+	"pip install bepipred-2.0/"
+	"conda pack -n bp2"
+	"mkdir bp2; tar xvf bp2.tar.gz -C bp2"		
+	move bp2 environment directory/delete bp2.tar.gz if needed, this is the bp2 env directory
