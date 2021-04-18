@@ -9,7 +9,7 @@ Researchers interested in more information about BepiTBR and other bioinformatic
 ### System requirements
 BepiTBR requires a linux x86-64 operating system with basic utilities (tested on RHEL 6, kernel 3.10.0-693 and Ubuntu 18.04, 20.04).
 ### Installation
-BepiTBR is written in python, raku, and R. It and can be downloaded from [github](https://github.com/zzhu33/BepiTBR/releases). Simply extract and place the BepiTBR directory in a desired location. Note that some dependecies need to be manually installed. ALthough actual compile/install times are low, obtaining and installing the dependencies may take approximately 1 hour. ~5 GB of free disk spece is also required during installation. 
+BepiTBR is written in python, raku, and R. It and can be downloaded from [github](https://github.com/zzhu33/BepiTBR/releases). Simply extract and place the BepiTBR directory in a desired location. Note that some dependecies need to be manually installed. Although actual compile/install times are low, obtaining and installing the dependencies may take approximately 1 hour. ~5 GB of free disk spece is also required during installation. 
 ### Dependencies
 Raku v6.d or later<br/>
 python 3.6.4+<br/>
