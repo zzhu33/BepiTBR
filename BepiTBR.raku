@@ -24,7 +24,8 @@
 #            (NA or /project/DPDS/Xiao_lab/shared/bcell_epitope_prediction/netMHCIIpan-3.2/netMHCIIpan)
 # dir: work folder to store all jobs' work folders. This folder will be cleaned before BepiTBR starts to work
 # thread: how many threads to start for the T/B cell epitope prediction jobs (BepiPred 2.0 is very slow)
-
+# keep: keep intermediate folders of Tepi and Bepi. "true" or "false". Default is false. When set to true, will compress these two folders
+#
 #raku /project/shared/xiao_wang/projects/Bcell_epitope/code/BepiTBR/BepiTBR.raku \
 #--motif0_file=/project/shared/xiao_wang/projects/Bcell_epitope/code/BepiTBR/example/test_data_BepiTBR/Ind-positive.txt \
 #--full0_file=/project/shared/xiao_wang/projects/Bcell_epitope/code/BepiTBR/example/test_data_BepiTBR/peptide_with_full_length.txt \
@@ -34,7 +35,8 @@
 #--MixMHC2pred=/project/shared/xiao_wang/software/MixMHC2pred/MixMHC2pred_unix \
 #--netMHCIIpan=/project/DPDS/Xiao_lab/shared/bcell_epitope_prediction/netMHCIIpan-3.2/netMHCIIpan \
 #--dir=/project/shared/xiao_wang/projects/Bcell_epitope/code/BepiTBR/example/test_output_BepiTBR \
-#--thread=20
+#--thread=20 \
+#--keep=false
 
 # example motif and full files without the index
 # motif file:
@@ -53,7 +55,7 @@
 # >VVDEAVMWYNL
 
 sub MAIN(Str :$motif0_file,Str :$full0_file,Str :$bepipred2,Str :$bepipred1,Str :$LBEEP,
-    Str :$MixMHC2pred,Str :$netMHCIIpan,Str :$dir,Int :$thread)
+    Str :$MixMHC2pred,Str :$netMHCIIpan,Str :$dir,Int :$thread,Str :$keep="false")
 {
     my ($path,$dir0);
     my $length=15;
@@ -101,8 +103,16 @@ sub MAIN(Str :$motif0_file,Str :$full0_file,Str :$bepipred2,Str :$bepipred1,Str 
 
     # generate predictions
     shell("Rscript "~$path~"/prediction.R "~$path~" "~$dir0);
-    shell("cd "~$dir0~";tar -zcvf Bepi.tar.gz Bepi;rm -f -r Bepi");
-    shell("cd "~$dir0~";tar -zcvf Tepi.tar.gz Tepi;rm -f -r Tepi");
+
+    # clean up
+    if ($keep eq "true")
+    {
+      1;
+    }else
+    {
+      shell("cd "~$dir0~";rm -f -r Bepi");
+      shell("cd "~$dir0~";rm -f -r Tepi");
+    }
 }
 
 sub abs_path(Str $path0,Bool $create=False)
