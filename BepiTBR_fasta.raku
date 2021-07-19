@@ -14,6 +14,7 @@
 # netMHCIIpan: same as BepiTBR_full.raku.
 # dir: output dir. for each antigen sequence, a sub-dir will be built
 # thread: same as BepiTBR.raku
+# keep: same as BepiTBR.raku
 
 #raku /project/shared/xiao_wang/projects/Bcell_epitope/code/BepiTBR/BepiTBR_fasta.raku \
 #--fasta0=/project/shared/xiao_wang/projects/Bcell_epitope/code/BepiTBR/example/test_data_BepiTBR_fasta/peptide_with_full_length.txt \
@@ -24,10 +25,11 @@
 #--MixMHC2pred=/project/shared/xiao_wang/software/MixMHC2pred/MixMHC2pred_unix \
 #--netMHCIIpan=NA \
 #--dir=/project/shared/xiao_wang/projects/Bcell_epitope/code/BepiTBR/example/test_output_BepiTBR_fasta \
-#--thread=20
+#--thread=20 \
+#--keep=false
 
 sub MAIN(Str :$fasta0,Int :$length,Str :$bepipred2,Str :$bepipred1,Str :$LBEEP,
-    Str :$MixMHC2pred,Str :$netMHCIIpan,Str :$dir,Int :$thread)
+    Str :$MixMHC2pred,Str :$netMHCIIpan,Str :$dir,Int :$thread,Str :$keep="false")
 {
     my ($fasta,$path,%full0,$a,$dir0,$id);
     my $tepi_length=15;
@@ -60,7 +62,7 @@ sub MAIN(Str :$fasta0,Int :$length,Str :$bepipred2,Str :$bepipred1,Str :$LBEEP,
             " --bepipred2="~$bepipred2~" --bepipred1="~$bepipred1~
             " --LBEEP="~$LBEEP~" --MixMHC2pred="~$MixMHC2pred~
             " --netMHCIIpan="~$netMHCIIpan~" --dir="~$dir0~"/"~$id~
-            " --thread="~$thread);
+            " --thread="~$thread~" --keep="~$keep);
     }
 }
 
