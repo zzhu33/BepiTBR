@@ -14,6 +14,7 @@
 # netMHCIIpan: same as BepiTBR.raku. Strongly recommend to set to NA, as it's slow
 # dir: same as BepiTBR.raku
 # thread: same as BepiTBR.raku
+# keep: same as BepiTBR.raku
 
 #raku /project/shared/xiao_wang/projects/Bcell_epitope/code/BepiTBR/BepiTBR_full.raku \
 #--full0="mtenstsapaakpkrakaskkstdhpkysdmivaaiqaeknragSSRQSIQKYIKSHYKvgenadsqiklsikrlvttgvlkqtkgvgag\
@@ -25,10 +26,11 @@
 #--MixMHC2pred=/project/shared/xiao_wang/software/MixMHC2pred/MixMHC2pred_unix \
 #--netMHCIIpan=NA \
 #--dir=/project/shared/xiao_wang/projects/Bcell_epitope/code/BepiTBR/example/test_output_BepiTBR_full \
-#--thread=20
+#--thread=20 \
+#--keep=false
 
 sub MAIN(Str :$full0,Int :$length,Str :$bepipred2,Str :$bepipred1,Str :$LBEEP,
-    Str :$MixMHC2pred,Str :$netMHCIIpan,Str :$dir,Int :$thread)
+    Str :$MixMHC2pred,Str :$netMHCIIpan,Str :$dir,Int :$thread,Str :$keep="false")
 {
     my ($path,$i,@tmp,$dir0,$full);
     my $tepi_length=15;
@@ -48,6 +50,7 @@ sub MAIN(Str :$full0,Int :$length,Str :$bepipred2,Str :$bepipred1,Str :$LBEEP,
     # handle early truncation
     $full=$full0;
     $full~~s/\*.*//;
+    if ( $full.chars-$length < 0 ) {die "Warning: Abort as the antigen sequence is too short!";}
 
     # call T epitopes
     shell("raku "~$path~"/T_cell_epitopes.raku"~
@@ -91,8 +94,16 @@ sub MAIN(Str :$full0,Int :$length,Str :$bepipred2,Str :$bepipred1,Str :$LBEEP,
 
     # generate predictions
     shell("Rscript "~$path~"/prediction.R "~$path~" "~$dir0);
-    shell("cd "~$dir0~";tar -zcvf Bepi.tar.gz Bepi;rm -f -r Bepi");
-    shell("cd "~$dir0~";tar -zcvf Tepi.tar.gz Tepi;rm -f -r Tepi");
+
+    # clean up
+    if ($keep eq "true")
+    {
+      1;
+    }else
+    {
+      shell("cd "~$dir0~";rm -f -r Bepi");
+      shell("cd "~$dir0~";rm -f -r Tepi");
+    }
 }
 
 sub abs_path(Str $path0,Bool $create=False)
