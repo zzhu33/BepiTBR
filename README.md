@@ -73,7 +73,7 @@ Negative_IEDB_ID_947078	1.013	0.6201	0.51	-0.5706	-0.4672	-0.6792	0.5832	VTRLRYR
 ...
 ```
 Here, `base` indicates original prediction scores using existing B cell epitope prediction software, `enhanced` indicates predictions made by considering both the base models and T cell epitope predictions, for each of the three base models, and `ensemble` is the final BepiTBR prediction score that is the aggregate of the three enhanced models.<br/>
-The B cell and T cell (MHC II) predictions used to calculate the final scores are compressed in order to save space; they are kept as `Bepi.tar.gz` and `Tepi.tar.gz`, respectively.<br/>
+The B cell and T cell (MHC II) predictions used to calculate the final scores are removed by defaul in order to save space; they can be kept using `--keep=True`.<br/>
 The example code should take ~4 minutes to complete. Performance can be increased by increasing `--thread` if hardware resources allows. Peak memory usage is approximately 3 GB/thread in this mode.
 ### Full protein mode
 Identify potential B cell epitopes from a full antigen protein sequence<br/>
@@ -90,7 +90,7 @@ raku BepiTBR_full.raku \
 --MixMHC2pred=/home/exampleUser/MixMHC2pred/MixMHC2pred_unix \
 --netMHCIIpan=NA \
 --dir=/home/exampleUser/BepiTBR/example/test_output_BepiTBR_full \
---thread=16
+--thread=8
 ```
 `--full0`: protein sequence<br/>
 `--length`: length of the B cell epitopes to scan in a moving window. Recommended length: 15<br/>
@@ -130,7 +130,7 @@ raku BepiTBR_fasta.raku \
 --MixMHC2pred=/home/exampleUser/MixMHC2pred/MixMHC2pred_unix \
 --netMHCIIpan=NA \
 --dir=/home/exampleUser/BepiTBR/examples/test_output_BepiTBR_fasta \
---thread=16
+--thread=4
 ```
 `--fasta0`: protein sequence file in fasta format<br/>
 `--length`: length of the B cell epitopes to scan in a moving window. Recommended length: 15<br/>
@@ -161,7 +161,7 @@ job_pos=2	-0.719	0.4382	0.32	-1.5136	-0.9351	-1.4293	-0.9637	LLQCVLLCVSLSLVL
 ```
 same as the other two modes, `base` indicates original prediction scores using existing B cell epitope prediction software, `enhanced` indicates predictions made by considering both the base models and T cell epitope predictions, for each of the three base models, and `ensemble` is the final BepiTBR prediction score that is the aggregate of the three enhanced models.<br/>
 Also the same as the other two modes, the B cell and T cell (MHC II) predictions used to calculate the final scores are compressed in order to save space; they are kept as `Bepi.tar.gz` and `Tepi.tar.gz`, respectively.<br/>
-The example code should take ~7 minutes to complete. Using the maximum number of CPU cores available is recommended.
+The example code should take ~7 minutes to complete. Using the maximum number of CPU cores available / 4 is recommended.
 
 ## Data 
 ### Training/validation data
