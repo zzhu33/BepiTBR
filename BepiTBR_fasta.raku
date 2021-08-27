@@ -64,6 +64,11 @@ sub MAIN(Str :$fasta0,Int :$length,Str :$bepipred2,Str :$bepipred1,Str :$LBEEP,
             " --netMHCIIpan="~$netMHCIIpan~" --dir="~$dir0~"/"~$id~
             " --thread="~$thread~" --keep="~$keep);
     }
+
+    # final cleanup
+    shell("tar -zcvf "~$dir0~"/../output.tar.gz "~$dir0);
+    shell("mv "~$dir0~"/../output.tar.gz "~$dir0);
+    for %full0.keys -> $id {shell("rm -f -r "~$dir0~"/"~$id);}
 }
 
 sub abs_path(Str $path0,Bool $create=False)
