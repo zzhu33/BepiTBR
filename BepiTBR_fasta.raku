@@ -31,7 +31,7 @@
 sub MAIN(Str :$fasta0,Int :$length,Str :$bepipred2,Str :$bepipred1,Str :$LBEEP,
     Str :$MixMHC2pred,Str :$netMHCIIpan,Str :$dir,Int :$thread,Str :$keep="false")
 {
-    my ($fasta,$path,%full0,$a,$dir0,$id);
+    my ($fasta,$path,%full0,$a,$dir0,$id,$combinePath);
     my $tepi_length=15;
 
     # find executing folders/files
@@ -64,9 +64,12 @@ sub MAIN(Str :$fasta0,Int :$length,Str :$bepipred2,Str :$bepipred1,Str :$LBEEP,
             " --netMHCIIpan="~$netMHCIIpan~" --dir="~$dir0~"/"~$id~
             " --thread="~$thread~" --keep="~$keep);
     }
-
+	# combine results
+	$combinePath = $?FILE;
+	$combinePath.=subst(/BepiTBR_fasta.raku/, "combine_fasta_results.py", :nth(*));
+	shell("python "~$combinePath~" -i "~$dir0~" "~$fasta);
     # final cleanup
-    shell("tar -zcvf "~$dir0~"/../output.tar.gz "~$dir0);
+    shell("tar -zcvf "~$dir0~"/../output.tar.gz -C "~$dir0~" .");
     shell("mv "~$dir0~"/../output.tar.gz "~$dir0);
     for %full0.keys -> $id {shell("rm -f -r "~$dir0~"/"~$id);}
 }
