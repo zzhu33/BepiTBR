@@ -16,16 +16,16 @@
 # thread: same as BepiTBR.raku
 # keep: same as BepiTBR.raku
 
-#raku /project/shared/xiao_wang/projects/Bcell_epitope/code/BepiTBR/BepiTBR_full.raku \
+#raku BepiTBR/BepiTBR_full.raku \
 #--full0="mtenstsapaakpkrakaskkstdhpkysdmivaaiqaeknragSSRQSIQKYIKSHYKvgenadsqiklsikrlvttgvlkqtkgvgag\
 #sfrlaksdepkksvafkktkkeikkvatpkkaskpkkaaskaptkkpkatpvkkakkklaatpkkakkpktvkakpvkaskpkkakpvkpkakssakragkkk" \
 #--length=15 \
-#--bepipred2=/project/shared/xiao_wang/projects/Bcell_epitope/code/conda_envs/bp2/bin/activate \
-#--bepipred1=/project/DPDS/Xiao_lab/shared/bcell_epitope_prediction/bp1/bepipred-1.0/bepipred \
-#--LBEEP=/project/shared/xiao_wang/software/LBEEP/ \
-#--MixMHC2pred=/project/shared/xiao_wang/software/MixMHC2pred/MixMHC2pred_unix \
+#--bepipred2=/home/conda_envs/bp2/bin/activate \
+#--bepipred1=/home/bcell_epitope_prediction/bp1/bepipred-1.0/bepipred \
+#--LBEEP=/home/bcell_epitope_prediction/LBEEP/ \
+#--MixMHC2pred=/home/bcell_epitope_prediction/MixMHC2pred/MixMHC2pred_unix \
 #--netMHCIIpan=NA \
-#--dir=/project/shared/xiao_wang/projects/Bcell_epitope/code/BepiTBR/example/test_output_BepiTBR_full \
+#--dir=BepiTBR/examples/test_output_BepiTBR_full \
 #--thread=20 \
 #--keep=false
 
