@@ -26,15 +26,15 @@
 # thread: how many threads to start for the T/B cell epitope prediction jobs (BepiPred 2.0 is very slow)
 # keep: keep intermediate folders of Tepi and Bepi. "true" or "false". Default is false. When set to true, will compress these two folders
 #
-#raku /project/shared/xiao_wang/projects/Bcell_epitope/code/BepiTBR/BepiTBR.raku \
-#--motif0_file=/project/shared/xiao_wang/projects/Bcell_epitope/code/BepiTBR/example/test_data_BepiTBR/Ind-positive.txt \
-#--full0_file=/project/shared/xiao_wang/projects/Bcell_epitope/code/BepiTBR/example/test_data_BepiTBR/peptide_with_full_length.txt \
-#--bepipred2=/project/shared/xiao_wang/projects/Bcell_epitope/code/conda_envs/bp2/bin/activate \
-#--bepipred1=/project/DPDS/Xiao_lab/shared/bcell_epitope_prediction/bp1/bepipred-1.0/bepipred \
-#--LBEEP=/project/shared/xiao_wang/software/LBEEP/ \
-#--MixMHC2pred=/project/shared/xiao_wang/software/MixMHC2pred/MixMHC2pred_unix \
-#--netMHCIIpan=/project/DPDS/Xiao_lab/shared/bcell_epitope_prediction/netMHCIIpan-3.2/netMHCIIpan \
-#--dir=/project/shared/xiao_wang/projects/Bcell_epitope/code/BepiTBR/example/test_output_BepiTBR \
+#raku BepiTBR/BepiTBR.raku \
+#--motif0_file=BepiTBR/examples/test_data_BepiTBR/Ind-positive.txt \
+#--full0_file=BepiTBR/examples/test_data_BepiTBR/peptide_with_full_length.txt \
+#--bepipred2=/home/conda_envs/bp2/bin/activate \
+#--bepipred1=/home/bcell_epitope_prediction/bp1/bepipred-1.0/bepipred \
+#--LBEEP=/home/bcell_epitope_prediction/LBEEP/ \
+#--MixMHC2pred=/home/bcell_epitope_prediction/MixMHC2pred/MixMHC2pred_unix \
+#--netMHCIIpan=/home/bcell_epitope_prediction/netMHCIIpan-3.2/netMHCIIpan \
+#--dir=BepiTBR/examples/test_output_BepiTBR \
 #--thread=20 \
 #--keep=false
 
