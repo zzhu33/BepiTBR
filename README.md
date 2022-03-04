@@ -5,6 +5,8 @@ Leveraging T-B reciprocity to enhance B cell epitope prediction
 The ability to predict B cell epitopes from antigen sequences is critical for biomedical research and many clinical applications. However, despite substantial efforts over the past 20 years, the performance of even the best B cell epitope prediction software is still modest. Based on the idea of T-B reciprocity, BepiTBR is a B cell epitope prediction model that demonstrates improved performance by incorporating prediction of nearby CD4+ T cell epitopes close to the B cell epitopes. 
 
 Researchers interested in more information about BepiTBR and other bioinformatics tools can visit Dr. Tao Wang's [lab website](https://qbrc.swmed.edu/labs/wanglab/index.php). 
+## Online version
+A free online version of [BepiTBR](https://dbai.biohpc.swmed.edu/bepitbr/) is provided as a part of the Database for Actionable Immunology ([dbAI](https://dbai.biohpc.swmed.edu/)) to facilitate its use by researchers. However, running a local version of BepiTBR is recommended for users with large numbers of samples.
 ## Installation guide
 ### System requirements
 BepiTBR requires a linux x86-64 operating system with basic utilities (tested on RHEL 6, kernel 3.10.0-693 and Ubuntu 18.04, 20.04).
@@ -25,13 +27,13 @@ tar
 download site: [http://www.cbs.dtu.dk/cgi-bin/nph-sw_request?bepipred](http://www.cbs.dtu.dk/cgi-bin/nph-sw_request?bepipred)<br/>
 follow the instructions in `bepipred-1.0.readme` to complete installation.
 #### BepiPred 2.0
-follow the instructions in `bp2_env_install_instructions.txt` under `install` to install the bp2 conda environment.
+follow the instructions in `bp2_env_install_instructions.txt` under the `install` directory to install the bp2 conda environment.
 #### LBEEP 1.0
 download site: [https://github.com/brsaran/LBEEP](https://github.com/brsaran/LBEEP)<br/>
 follow the instructions in `README.md` to install LBEEP 1.0.
 #### NetMHCIIpan 3.2 (optional)
 download site: [http://www.cbs.dtu.dk/cgi-bin/nph-sw_request?netMHCIIpan](http://www.cbs.dtu.dk/cgi-bin/nph-sw_request?netMHCIIpan)<br/>
-follow the instructions in `netMHCIIpan-3.2.readme` to complete installation.
+follow the instructions in `netMHCIIpan-3.2.readme` to complete the installation.
 #### MixMHC2pred 
 download site: [https://github.com/GfellerLab/MixMHC2pred](https://github.com/GfellerLab/MixMHC2pred)<br/>
 follow the instructions in `README.md` to install.
