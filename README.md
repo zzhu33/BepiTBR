@@ -6,7 +6,7 @@ The ability to predict B cell epitopes from antigen sequences is critical for bi
 
 Researchers interested in more information about BepiTBR and other bioinformatics tools can visit Dr. Tao Wang's [lab website](https://qbrc.swmed.edu/labs/wanglab/index.php). 
 ## Online version
-A free online version of [BepiTBR](https://dbai.biohpc.swmed.edu/bepitbr/) is provided as a part of the Database for Actionable Immunology ([dbAI](https://dbai.biohpc.swmed.edu/)) to facilitate its use by researchers. However, running a local version of BepiTBR is recommended for users with large numbers of samples.
+A free [online version](https://dbai.biohpc.swmed.edu/bepitbr/) of BepiTBR is provided as a part of the Database for Actionable Immunology ([dbAI](https://dbai.biohpc.swmed.edu/)) to facilitate its use by researchers. However, running a local version of BepiTBR is recommended for users with large numbers of samples.
 ## Installation guide
 ### System requirements
 BepiTBR requires a linux x86-64 operating system with basic utilities (tested on RHEL 6, kernel 3.10.0-693 and Ubuntu 18.04, 20.04).
@@ -163,6 +163,7 @@ job_pos=2	-0.719	0.4382	0.32	-1.5136	-0.9351	-1.4293	-0.9637	LLQCVLLCVSLSLVL
 ```
 same as the other two modes, `base` indicates original prediction scores using existing B cell epitope prediction software, `enhanced` indicates predictions made by considering both the base models and T cell epitope predictions, for each of the three base models, and `ensemble` is the final BepiTBR prediction score that is the aggregate of the three enhanced models.<br/>
 Also the same as the other two modes, the B cell and T cell (MHC II) predictions used to calculate the final scores are compressed in order to save space; they are kept as `Bepi.tar.gz` and `Tepi.tar.gz`, respectively.<br/>
+A combined output is also provided in the main output directory.<br/>
 The example code should take ~7 minutes to complete. Using the maximum number of CPU cores available / 4 is recommended.
 
 ## Data 
