@@ -11,7 +11,7 @@ A free [online version](https://dbai.biohpc.swmed.edu/bepitbr/) of BepiTBR is pr
 ### System requirements
 BepiTBR requires a linux x86-64 operating system with basic utilities (tested on RHEL 6, kernel 3.10.0-693 and Ubuntu 18.04, 20.04).
 ### Installation
-BepiTBR is written in python, raku, and R. It and can be downloaded from [github](https://github.com/zzhu33/BepiTBR/releases). Simply extract and place the BepiTBR directory in a desired location. Note that some dependecies need to be manually installed. Although actual compile/install times are low, obtaining and installing the dependencies may take approximately 1 hour. ~5 GB of free disk spece is also required during installation. 
+BepiTBR is written in python, raku, and R. It and can be downloaded from [github](https://github.com/zzhu33/BepiTBR/releases). Simply extract and place the BepiTBR directory in a desired location. Note that some dependecies need to be manually installed. Although actual compile/install times are low, obtaining and installing the dependencies may take approximately 1 hour. ~5 GB of free disk space is also required during installation. 
 ### Dependencies
 Raku v6.d or later<br/>
 python 3.6.4+<br/>
@@ -24,7 +24,7 @@ g++ 4.8.5+<br/>
 tar
 
 #### BepiPred 1.0
-download site: [http://www.cbs.dtu.dk/cgi-bin/nph-sw_request?bepipred](http://www.cbs.dtu.dk/cgi-bin/nph-sw_request?bepipred)<br/>
+[download link](https://services.healthtech.dtu.dk/cgi-bin/sw_request?software=bepipred&version=1.0&packageversion=1.0c&platform=Linux)<br/>
 follow the instructions in `bepipred-1.0.readme` to complete installation.
 #### BepiPred 2.0
 follow the instructions in `bp2_env_install_instructions.txt` under the `install` directory to install the bp2 conda environment.
